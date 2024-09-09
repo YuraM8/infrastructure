@@ -1,16 +1,14 @@
-version: '3.8'
 
 services:
   db:
     image: mariadb:10.5
     environment:
-      MYSQL_ROOT_PASSWORD: 9
-      MYSQL_DATABASE: teachua
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 9
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - db_data:/var/lib/mysql
-      - ./back/data.sql:/docker-entrypoint-initdb.d/data.sql
+      - ../back/data.sql:/docker-entrypoint-initdb.d/data.sql
     ports:
       - "3306:3306"
     restart: always
@@ -20,10 +18,10 @@ services:
       context: ../back
       dockerfile: Dockerfile
     environment:
-      JDBC_DRIVER: org.mariadb.jdbc.Driver
-      DATASOURCE_URL: jdbc:mariadb://db:3306/teachua
-      DATASOURCE_USER: root
-      DATASOURCE_PASSWORD: 9
+      JDBC_DRIVER: ${JDBC_DRIVER}
+      DATASOURCE_URL: ${DATASOURCE_URL}
+      DATASOURCE_USER: ${DATASOURCE_USER}
+      DATASOURCE_PASSWORD: ${DATASOURCE_PASSWORD}
     ports:
       - "8080:8080"
     depends_on:

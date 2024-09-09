@@ -14,9 +14,7 @@ services:
     restart: always
 
   backend:
-    build:
-      context: ../back
-      dockerfile: Dockerfile
+    image: ghcr.io/yuram8/teachua-back:latest
     environment:
       JDBC_DRIVER: ${JDBC_DRIVER}
       DATASOURCE_URL: ${DATASOURCE_URL}
@@ -28,9 +26,7 @@ services:
       - db
 
   frontend:
-    build:
-      context: ../front
-      dockerfile: Dockerfile
+    image: ghcr.io/yuram8/teachua-frontend:latest
     ports:
       - "3000:80"
     environment:

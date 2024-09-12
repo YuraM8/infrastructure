@@ -8,6 +8,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
+      - db_data:/var/lib/mysql
       - ../back/data.sql:/docker-entrypoint-initdb.d/data.sql
     ports:
       - "3306:3306"
@@ -30,7 +31,7 @@ services:
     ports:
       - "3000:80"
     environment:
-      REACT_APP_BACKEND_URL: http://localhost:8080
+      REACT_APP_BACKEND_URL: http://backend:8080
     depends_on:
       - backend
 

@@ -1,0 +1,35 @@
+# Залежності
+node_modules/
+vendor/
+
+# Локальні конфігурації IDE
+.vscode/
+.idea/
+
+# Збірки
+build/
+dist/
+target/
+bin/
+
+# Чутливі файли
+.env
+.env.local
+secrets.yml
+
+# Файли операційних систем
+.DS_Store
+Thumbs.db
+
+# Логи та кеш
+*.log
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Тимчасові файли
+tmp/
+*.bak
+*.swp
+minikube-linux-amd64

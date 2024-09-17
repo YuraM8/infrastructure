@@ -33,3 +33,4 @@ tmp/
 *.bak
 *.swp
 minikube-linux-amd64
+db-secret.yaml

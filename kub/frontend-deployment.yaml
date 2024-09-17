@@ -18,8 +18,8 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: REACT_APP_ROOT_SERVER
-          value: "http://backend-service:8080/dev"
+        - name: ROOT_URI
+          value: "http://192.168.49.2:30000"
         volumeMounts:
         - name: nginx-config-volume
           mountPath: /etc/nginx/nginx.conf

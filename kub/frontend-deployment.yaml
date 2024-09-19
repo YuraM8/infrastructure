@@ -11,6 +11,9 @@ spec:
     metadata:
       labels:
         app: frontend
+      annotations:
+        argocd-image-updater.argoproj.io/frontend-container.image-name: ghcr.io/yuram8/teachua-frontend
+        argocd-image-updater.argoproj.io/frontend-container.update-strategy: latest
     spec:
       containers:
       - name: frontend

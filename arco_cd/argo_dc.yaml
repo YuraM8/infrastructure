@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yura-1
+spec:
+  source:
+    repoURL: https://github.com/YuraM8/infrastructure
+    path: kub
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  images:
+    - name: ghcr.io/yuram8/teachua-back:latest
+      newTag: latest
+    - name: ghcr.io/yuram8/teachua-frontend:latest
+      newTag: latest
+

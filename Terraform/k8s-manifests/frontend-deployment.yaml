@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+      annotations:
+        argocd-image-updater.argoproj.io/frontend-container.image-name: ghcr.io/yuram8/teachua-frontend
+        argocd-image-updater.argoproj.io/frontend-container.update-strategy: latest
+    spec:
+      containers:
+      - name: frontend
+        image: ghcr.io/yuram8/teachua-frontend:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: ROOT_URI
+          value: "/api"
+        volumeMounts:
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config

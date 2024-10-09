@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+      annotations:
+        argocd-image-updater.argoproj.io/backend-container.image-name: ghcr.io/yuram8/teachua-back
+        argocd-image-updater.argoproj.io/backend-container.update-strategy: latest
+    spec:
+      containers:
+      - name: backend
+        image: ghcr.io/yuram8/teachua-back:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: JDBC_DRIVER
+          value: "org.mariadb.jdbc.Driver"
+        - name: DATASOURCE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: jdbc_url
+        - name: DATASOURCE_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: mysql-user
+        - name: DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: mysql-password

@@ -2,10 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: yura-1
+  namespace: argocd
 spec:
+  project: teachua
   source:
     repoURL: https://github.com/YuraM8/infrastructure
-    path: kub
+    path: Terraform/k8s-manifests
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -13,9 +16,14 @@ spec:
     automated:
       prune: true
       selfHeal: true
-  images:
-    - name: ghcr.io/yuram8/teachua-back:latest
-      newTag: latest
-    - name: ghcr.io/yuram8/teachua-frontend:latest
-      newTag: latest
-
+  # images:
+  #   - name: ghcr.io/yuram8/teachua-back:latest
+  #     newTag: latest
+  #   - name: ghcr.io/yuram8/teachua-frontend:latest
+  #     newTag: latest
+  ignoreDifferences:
+    - group: networking.k8s.io
+      kind: IngressClass
+      name: alb
+      jsonPointers:
+        - /spec/controller

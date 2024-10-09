@@ -1,0 +1,127 @@
+g
+Unable to load data: app is not allowed in project "teachua", or the project does not exist
+
+
+
+
+OPERATION
+Sync
+PHASE
+Failed
+MESSAGE
+one or more objects failed to apply, reason: error when patching "/dev/shm/1959549859": IngressClass.networking.k8s.io "alb" is invalid: spec.controller: Invalid value: "alb.ingress.k8s.aws/ingress-controller": field is immutable (retried 5 times).
+STARTED AT
+9 minutes ago (Wed Oct 09 2024 16:49:32 GMT+0300)
+DURATION
+05:12 min
+FINISHED AT
+4 minutes ago (Wed Oct 09 2024 16:54:44 GMT+0300)
+REVISION
+7b9910f
+INITIATED BY
+automated sync policy
+networking.k8s.io/v1/IngressClass
+default
+alb
+SyncFailed
+error when patching "/dev/shm/1959549859": IngressClass.networking.k8s.io "alb" is invalid: spec.controller: Invalid value: "alb.ingress.k8s.aws/ingress-controller": field is immutable
+
+
+apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+kind: IngressClass
+metadata:
+metadata:
+  annotations:
+  annotations:
+    meta.helm.sh/release-name: aws-load-balancer-controller
+    meta.helm.sh/release-name: aws-load-balancer-controller
+    meta.helm.sh/release-namespace: kube-system
+    meta.helm.sh/release-namespace: kube-system
+  generation: 1
+  generation: 1
+  labels:
+  labels:
+    app.kubernetes.io/instance: aws-load-balancer-controller
+    app.kubernetes.io/instance: yura-1
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/version: v2.4.0
+    app.kubernetes.io/version: v2.4.0
+    helm.sh/chart: aws-load-balancer-controller-1.4.0
+    helm.sh/chart: aws-load-balancer-controller-1.4.0
+  managedFields:
+  managedFields:
+    - apiVersion: networking.k8s.io/v1
+    - apiVersion: networking.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsType: FieldsV1
+      fieldsV1:
+      fieldsV1:
+        f:metadata:
+        f:metadata:
+          f:annotations:
+          f:annotations:
+            .: {}
+            .: {}
+            f:meta.helm.sh/release-name: {}
+            f:meta.helm.sh/release-name: {}
+            f:meta.helm.sh/release-namespace: {}
+            f:meta.helm.sh/release-namespace: {}
+          f:labels:
+          f:labels:
+            .: {}
+            .: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/managed-by: {}
+            f:app.kubernetes.io/managed-by: {}
+            f:app.kubernetes.io/name: {}
+            f:app.kubernetes.io/name: {}
+            f:app.kubernetes.io/version: {}
+            f:app.kubernetes.io/version: {}
+            f:helm.sh/chart: {}
+            f:helm.sh/chart: {}
+        f:spec:
+        f:spec:
+          f:controller: {}
+          f:controller: {}
+          f:parameters:
+          f:parameters:
+            .: {}
+            .: {}
+            f:apiGroup: {}
+            f:apiGroup: {}
+            f:kind: {}
+            f:kind: {}
+            f:name: {}
+            f:name: {}
+            f:scope: {}
+            f:scope: {}
+      manager: terraform-provider-helm_v2.15.0_x5
+      manager: terraform-provider-helm_v2.15.0_x5
+      operation: Update
+      operation: Update
+      time: '2024-10-09T11:18:58Z'
+      time: '2024-10-09T11:18:58Z'
+  name: alb
+  name: alb
+  resourceVersion: '1122'
+  resourceVersion: '1122'
+  uid: a58dd068-4dc9-4c96-8ca6-84fbf6450819
+  uid: a58dd068-4dc9-4c96-8ca6-84fbf6450819
+spec:
+spec:
+  parameters:
+  parameters:
+    apiGroup: elbv2.k8s.aws
+    apiGroup: elbv2.k8s.aws
+    kind: IngressClassParams
+    kind: IngressClassParams
+    name: alb
+    name: alb
+    scope: Cluster
+    scope: Cluster
